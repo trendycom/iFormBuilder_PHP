@@ -43,6 +43,31 @@ class ZCPage extends ZCObject{
 		return $o;		
 	}
 	
+	public static function getPageByName($profileId, $name){
+		$api = "profiles/$profileId/pages";
+		$filters = array();
+		$filter['KEY'] = 'NAME';
+		$filter['CONDITION'] = '=';
+		$filter['VALUE'] = $name;
+		$filters[] = $filter;
+		
+		$p['FILTER'] = $filters;
+		$params = http_build_query($p);
+		
+		$ifb = iFormBuilder::Instance();
+		$o = $ifb->sendApiRequest($api, $params, 'GET');
+		
+		//Assume one profile.
+		$pages = $o['PAGES'];
+		$pageId = 0;
+		if (count ($pages)>0) {
+			$pageId = $pages[0]['ID'];
+		}
+		return $pageId;
+		
+	}
+	
+	
 	public function pageAssignment($assignTo, $isCollect, $isView){
 	}
 	

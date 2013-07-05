@@ -2,6 +2,7 @@ iFormBuilder_PHP
 ================
 
 PHP SDK for accessing iFormBuilder API
+This project provides easy PHP access to the iFormBuilder API.
 
 	$iFormBuilder = iFormBuilder::Instance();
 

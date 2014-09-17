@@ -82,15 +82,16 @@ class ZCOptionList extends ZCObject{
 		return $o;
 	}
 
+	// Modified by Jamie Ciocco (http://trendy.com) to fix option list editing
 	public function edit(){
 		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTIONLIST_ID";
-		$params = array( "NAME"=>$this->NAME, "OPTIONS"=>$this->OPTIONS);
 		
 		$ifb = iFormBuilder::Instance();
-		$o = $ifb->sendApiRequest($api, http_build_query($params), 'PUT');
+		$o = $ifb->sendApiRequest($api, http_build_query($this), 'PUT');
 		return $o;	
 	}
 	
+	// added by Jamie Ciocco (http://trendy.com) 
 	public function append($options){
 		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTIONLIST_ID/append";
 		$params = json_encode($options);

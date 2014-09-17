@@ -16,7 +16,7 @@ class ZCElement extends ZCObject{
 		$this->DATA_SIZE = 10;
 		$this->WIDGET_TYPE = 0;
 		$this->SORT_ORDER = 0;
-		$this->OPTION_LIST_ID = 0;
+		$this->OPTIONLIST_ID = 0;
 		$this->LOW_VALUE = 0;
 		$this->HIGH_VALUE = 0;
 		$this->DYNAMIC_VALUE = '';
@@ -60,7 +60,7 @@ class ZCElement extends ZCObject{
 		if (isset($p['DATA_TYPE'])) $this->DATA_TYPE = $p['DATA_TYPE'];
 		if (isset($p['DATA_SIZE'])) $this->DATA_SIZE = $p['DATA_SIZE'];
 		if (isset($p['WIDGET_TYPE'])) $this->WIDGET_TYPE = $p['WIDGET_TYPE'];
-		if (isset($p['OPTION_LIST_ID'])) $this->OPTION_LIST_ID = $p['OPTION_LIST_ID'];
+		if (isset($p['OPTIONLIST_ID'])) $this->OPTIONLIST_ID = $p['OPTIONLIST_ID'];
 		if (isset($p['HIGH_VALUE'])) $this->HIGH_VALUE = $p['HIGH_VALUE'];
 		if (isset($p['LOW_VALUE'])) $this->LOW_VALUE = $p['LOW_VALUE'];
 		if (isset($p['CONDITION_VALUE'])) $this->CONDITION_VALUE = $p['CONDITION_VALUE'];

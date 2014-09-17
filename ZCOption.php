@@ -4,7 +4,7 @@ class ZCOption /*extends ZCObject */{ //ZCOption is actually no a ZCObject, just
 	
 	public function __construct($_optionListId, $_optionId){
 		$this->OPTION_ID = $_optionId;
-		$this->OPTION_LIST_ID = $_optionListId;
+		$this->OPTIONLIST_ID = $_optionListId;
 		$this->KEY_VALUE  = '';
 		$this->LABEL = '';
 		$this->SORT_ORDER = 0;
@@ -12,7 +12,7 @@ class ZCOption /*extends ZCObject */{ //ZCOption is actually no a ZCObject, just
 	}
 	
 	public static function fromServerObj($p){
-		$_optionListId = $p['OPTION_LIST_ID'];
+		$_optionListId = $p['OPTIONLIST_ID'];
 		$_optionId = $p['OPTION_ID'];
 		$instance = new ZCOption($_optionListId, $_optionId);
 		$instance->populateFromServerObj($p);

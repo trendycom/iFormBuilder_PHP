@@ -52,12 +52,12 @@ class ZCOptionList extends ZCObject{
 	
 
 	public function get(){
-		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTION_LIST_ID";
+		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTIONLIST_ID";
 		$params = '';
 		$ifb = iFormBuilder::Instance();
 		$o = $ifb->sendApiRequest($api, $params, 'GET');
-		echo "Here\n";
-		echo '['.print_r($o).']';
+		echo "Here".$this->OPTIONLIST_ID."\n";
+		echo '[]';
 		
 		
 		$p = $o['OPTIONLIST'];
@@ -83,16 +83,25 @@ class ZCOptionList extends ZCObject{
 	}
 
 	public function edit(){
-		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTION_LIST_ID";
-		$params = json_encode($this);
+		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTIONLIST_ID";
+		$params = array( "NAME"=>$this->NAME, "OPTIONS"=>$this->OPTIONS);
 		
 		$ifb = iFormBuilder::Instance();
-		$o = $ifb->sendApiRequest($api, $params, 'POSTJ');
+		$o = $ifb->sendApiRequest($api, http_build_query($params), 'PUT');
+		return $o;	
+	}
+	
+	public function append($options){
+		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTIONLIST_ID/append";
+		$params = json_encode($options);
+		$this->OPTIONS = array_merge($this->OPTIONS, $options);
+		$ifb = iFormBuilder::Instance();
+		$o = $ifb->sendApiRequest($api, http_build_query($params), 'POSTJ');
 		return $o;	
 	}
 	
 	public function delete(){
-		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTION_LIST_ID";
+		$api = "profiles/$this->PROFILE_ID/optionlists/$this->OPTIONLIST_ID";
 		$params = '';
 		$ifb = iFormBuilder::Instance();
 		$o = $ifb->sendApiRequest($api, $params, 'DELETE');
